@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Centro de Lavado El Primo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'], },
+                    colors: { brand: { light: '#e0f2fe', DEFAULT: '#0284c7', dark: '#075985', } }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 flex flex-col min-h-screen">
+
+    <nav class="bg-white shadow-md fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <img src="EL_PRIMO.jpeg" alt="Logo" class="h-12 w-auto object-contain rounded-lg shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0284c7/white?text=Logo';">
+                        <span class="font-bold text-xl md:text-2xl text-brand-dark leading-tight">Centro de<br>Lavado El Primo</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-brand font-medium transition">Inicio</a>
+                    <a href="nosotros.html" class="text-gray-600 hover:text-brand font-medium transition">Nosotros</a>
+                    <a href="servicios.html" class="text-gray-600 hover:text-brand font-medium transition">Servicios</a>
+                    <a href="productos.html" class="text-brand font-medium transition">Productos</a>
+                    <a href="#contacto" class="bg-brand text-white px-5 py-2 rounded-full font-medium hover:bg-brand-dark transition shadow-md">Contacto</a>
+                </div>
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-brand focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3 shadow-inner">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:bg-brand-light hover:text-brand rounded-md font-medium">Inicio</a>
+                <a href="nosotros.html" class="block px-3 py-2 text-gray-600 hover:bg-brand-light hover:text-brand rounded-md font-medium">Nosotros</a>
+                <a href="servicios.html" class="block px-3 py-2 text-gray-600 hover:bg-brand-light hover:text-brand rounded-md font-medium">Servicios</a>
+                <a href="productos.html" class="block px-3 py-2 text-brand font-bold bg-brand-light rounded-md">Productos</a>
+                <a href="#contacto" class="block px-3 py-2 text-brand font-bold hover:bg-brand-light rounded-md">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-20 pt-32 bg-brand-light flex-grow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-2">Nuestros Productos</h2>
+                    <p class="text-gray-600 text-lg">Insumos de calidad para resultados impecables.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <i class="fa-solid fa-pump-soap text-6xl text-brand opacity-20"></i>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center text-center border-t-4 border-blue-400">
+                    <div class="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mb-4 text-blue-500">
+                        <i class="fa-solid fa-jug-detergent text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">Detergente Líquido</h4>
+                    <p class="text-sm text-gray-500">Especial para ropa, cuida los tejidos y elimina manchas difíciles.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center text-center border-t-4 border-blue-600">
+                    <div class="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mb-4 text-blue-600">
+                        <i class="fa-solid fa-soap text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">Jabón Líquido Vehículos</h4>
+                    <p class="text-sm text-gray-500">Fórmula especial que protege la pintura y da un brillo duradero.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center text-center border-t-4 border-indigo-400">
+                    <div class="bg-indigo-50 w-16 h-16 rounded-full flex items-center justify-center mb-4 text-indigo-500">
+                        <i class="fa-solid fa-spray-can-sparkles text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">Jabón Echa Espuma</h4>
+                    <p class="text-sm text-gray-500">Ideal para la limpieza profunda de interiores y tapicerías.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center text-center border-t-4 border-purple-400">
+                    <div class="bg-purple-50 w-16 h-16 rounded-full flex items-center justify-center mb-4 text-purple-500">
+                        <i class="fa-solid fa-wind text-2xl"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">Aromatizante Elegante</h4>
+                    <p class="text-sm text-gray-500">Variedad de fragancias y jabón aromatizante para un toque fresco final.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto" class="bg-gray-900 text-white pt-16 pb-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="logo.png" alt="Logo" class="h-10 w-auto object-contain rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/100x100/ffffff/0284c7?text=Logo';">
+                        <span class="font-bold text-2xl tracking-wide">Centro de Lavado El Primo</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">S.A. de C.V. <br> Limpieza total en un solo lugar.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
+
