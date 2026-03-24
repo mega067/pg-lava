@@ -1,86 +1,57 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Lavado El Primo</title>
-    <meta name="description"
-        content="Centro de Lavado El Primo - Limpieza total en un solo lugar. Autolavado, lavandería y regaderas.">
+    <title>Centro de Lavado El Primo - Inicio</title>
+    <meta name="description" content="Centro de Lavado El Primo - Limpieza total en un solo lugar. Autolavado, lavandería y regaderas.">
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Poppins', 'sans-serif'], },
                     colors: {
-                        brand: {
-                            light: '#e0f2fe', // sky-100
-                            DEFAULT: '#0284c7', // sky-600
-                            dark: '#075985', // sky-800
-                        }
+                        brand: { light: '#e0f2fe', DEFAULT: '#0284c7', dark: '#075985', }
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Custom styles para mejorar el diseño */
         .hero-pattern {
             background-color: #0284c7;
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .card-hover {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 
 <body class="font-sans text-gray-800 bg-gray-50 flex flex-col min-h-screen">
 
-    <!-- Navegación -->
     <nav class="bg-white shadow-md fixed w-full z-50 top-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
-                    <a href="#" class="flex items-center gap-3">
-                        <!-- Aquí está la imagen local del logo -->
-                        <img src="EL_PRIMO.jpeg" alt="Logo Centro de Lavado El Primo" class="h-12 w-auto object-contain rounded-lg shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0284c7/white?text=Logo';">
-                        
+                    <a href="index.html" class="flex items-center gap-3">
+                        <img src="EL_PRIMO.jpeg" alt="Logo" class="h-12 w-auto object-contain rounded-lg shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0284c7/white?text=Logo';">
                         <span class="font-bold text-xl md:text-2xl text-brand-dark leading-tight">
                             Centro de<br>Lavado El Primo
                         </span>
                     </a>
                 </div>
 
-                <!-- Menú Desktop -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#inicio" class="text-gray-600 hover:text-brand font-medium transition">Inicio</a>
-                    <a href="#nosotros" class="text-gray-600 hover:text-brand font-medium transition">Nosotros</a>
-                    <a href="#servicios" class="text-gray-600 hover:text-brand font-medium transition">Servicios</a>
-                    <a href="#productos" class="text-gray-600 hover:text-brand font-medium transition">Productos</a>
-                    <a href="#contacto"
-                        class="bg-brand text-white px-5 py-2 rounded-full font-medium hover:bg-brand-dark transition shadow-md">Contacto</a>
+                    <a href="index.html" class="text-brand font-medium transition">Inicio</a>
+                    <a href="nosotros.html" class="text-gray-600 hover:text-brand font-medium transition">Nosotros</a>
+                    <a href="servicios.html" class="text-gray-600 hover:text-brand font-medium transition">Servicios</a>
+                    <a href="productos.html" class="text-gray-600 hover:text-brand font-medium transition">Productos</a>
+                    <a href="#contacto" class="bg-brand text-white px-5 py-2 rounded-full font-medium hover:bg-brand-dark transition shadow-md">Contacto</a>
                 </div>
 
-                <!-- Botón Menú Móvil -->
                 <div class="flex items-center md:hidden">
                     <button id="mobile-menu-button" class="text-gray-600 hover:text-brand focus:outline-none p-2">
                         <i class="fa-solid fa-bars text-2xl"></i>
@@ -89,25 +60,18 @@
             </div>
         </div>
 
-        <!-- Menú Móvil desplegable -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
             <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3 shadow-inner">
-                <a href="#inicio"
-                    class="block px-3 py-2 text-gray-600 hover:bg-brand-light hover:text-brand rounded-md font-medium">Inicio</a>
-                <a href="#nosotros"
-                    class="block px-3 py-2 text-gray-600 hover:bg-brand-light hover:text-brand rounded-md font-medium">Nosotros</a>
-                <a href="#servicios"
-                    class="block px-3 py-2 text-gray-600 hover:bg-brand-light hover:text-brand rounded-md font-medium">Servicios</a>
-                <a href="#productos"
-                    class="block px-3 py-2 text-gray-600 hover:bg-brand-light hover:text-brand rounded-md font-medium">Productos</a>
-                <a href="#contacto"
-                    class="block px-3 py-2 text-brand font-bold hover:bg-brand-light rounded-md">Contacto</a>
+                <a href="index.html" class="block px-3 py-2 text-brand font-bold bg-brand-light rounded-md">Inicio</a>
+                <a href="nosotros.html" class="block px-3 py-2 text-gray-600 hover:bg-brand-light hover:text-brand rounded-md font-medium">Nosotros</a>
+                <a href="servicios.html" class="block px-3 py-2 text-gray-600 hover:bg-brand-light hover:text-brand rounded-md font-medium">Servicios</a>
+                <a href="productos.html" class="block px-3 py-2 text-gray-600 hover:bg-brand-light hover:text-brand rounded-md font-medium">Productos</a>
+                <a href="#contacto" class="block px-3 py-2 text-brand font-bold hover:bg-brand-light rounded-md">Contacto</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header id="inicio" class="hero-pattern text-white pt-28 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
+    <header class="hero-pattern text-white pt-28 pb-20 md:pt-40 md:pb-32 relative overflow-hidden flex-grow">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
                 Limpieza total en <br class="hidden md:block"> un solo lugar.
@@ -117,328 +81,30 @@
                 instalaciones de primera.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#servicios"
-                    class="bg-white text-brand px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg">
-                    Ver Servicios
-                </a>
-                <a href="#nosotros"
-                    class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white/10 transition">
-                    Conócenos
-                </a>
+                <a href="servicios.html" class="bg-white text-brand px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg">Ver Servicios</a>
+                <a href="nosotros.html" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white/10 transition">Conócenos</a>
             </div>
-        </div>
-
-        <!-- Decoración de olas (SVG) -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-            <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1"
-                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path
-                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,123.15,189.22,109.11,234.35,98.24,277.29,78.29,321.39,56.44Z"
-                    fill="#f9fafb"></path>
-            </svg>
         </div>
     </header>
 
-    <!-- Sección Nosotros -->
-    <section id="nosotros" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">¿Quiénes Somos?</h2>
-                <div class="w-24 h-1 bg-brand mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
-                <div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Nuestro Origen</h3>
-                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                        El presente proyecto surge de la necesidad de contar con un espacio integral donde las personas
-                        puedan realizar actividades de limpieza de manera práctica, accesible y en un solo lugar.
-                    </p>
-                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                        Este negocio busca ofrecer un servicio multifuncional que permite a sus clientes lavar su
-                        automóvil, objetos diversos, ropa en nuestra área de lavandería, además de contar con regaderas
-                        para aseo personal. De esta manera, <strong>se optimiza tiempo, recursos y comodidad</strong>
-                        para los usuarios.
-                    </p>
-                    <p class="text-gray-600 text-lg leading-relaxed">
-                        Asimismo, el proyecto promueve la cultura de limpieza, orden y cuidado tanto personal como
-                        material, brindando herramientas adecuadas y un espacio seguro. Nuestro carácter innovador nos
-                        convierte en una propuesta diferenciada dentro del sector.
-                    </p>
-                </div>
-                <div class="grid gap-6">
-                    <!-- Tarjeta Misión -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-brand card-hover">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="bg-brand-light p-3 rounded-full text-brand">
-                                <i class="fa-solid fa-bullseye text-2xl"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-brand-dark">Nuestra Misión</h4>
-                        </div>
-                        <p class="text-gray-600">
-                            Brindamos un espacio integral, accesible y funcional donde nuestros clientes pueden lavar
-                            sus vehículos, pertenencias personales y ropa con equipos hidráulicos de calidad, además de
-                            contar con áreas de regaderas para su comodidad. Nos enfocamos en ofrecer instalaciones
-                            limpias, seguras y eficientes, promoviendo el ahorro de agua, el orden y una experiencia
-                            práctica en un solo lugar.
-                        </p>
-                    </div>
-
-                    <!-- Tarjeta Visión -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-brand-dark card-hover">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="bg-brand-light p-3 rounded-full text-brand-dark">
-                                <i class="fa-solid fa-eye text-2xl"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-brand-dark">Nuestra Visión</h4>
-                        </div>
-                        <p class="text-gray-600">
-                            Ser el centro de lavado integral líder en la región, reconocido por la calidad de nuestras
-                            instalaciones, el buen servicio y la innovación en soluciones de limpieza para vehículos,
-                            personas y prendas. Aspiramos a crecer como un modelo de negocio moderno, eficiente y
-                            sostenible que facilite la vida diaria de nuestros clientes.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Servicios -->
-    <section id="servicios" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">Servicios Integrales</h2>
-                <p class="text-lg text-gray-500 max-w-2xl mx-auto">Todo lo que necesitas para tu limpieza personal y
-                    material en instalaciones amplias y seguras.</p>
-                <div class="w-24 h-1 bg-brand mx-auto rounded-full mt-6"></div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <!-- Servicio 1 -->
-                <div class="bg-gray-50 p-8 rounded-2xl shadow-md card-hover border border-gray-100">
-                    <div
-                        class="w-20 h-20 mx-auto bg-brand text-white rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg transform rotate-3">
-                        <i class="fa-solid fa-car-side"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Autolavado</h3>
-                    <p class="text-gray-600 mb-4">
-                        Espacio amplio para vehículos con equipos profesionales.
-                    </p>
-                    <ul class="text-sm text-gray-500 space-y-2 text-left bg-white p-4 rounded-lg">
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Manguera hidráulica a presión</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Mangueras estándar</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Lavado de objetos diversos</li>
-                    </ul>
-                </div>
-
-                <!-- Servicio 2 -->
-                <div class="bg-gray-50 p-8 rounded-2xl shadow-md card-hover border border-gray-100">
-                    <div
-                        class="w-20 h-20 mx-auto bg-brand text-white rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg transform -rotate-3">
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Lavandería</h3>
-                    <p class="text-gray-600 mb-4">
-                        Espacio dedicado para el cuidado de tu ropa y prendas.
-                    </p>
-                    <ul class="text-sm text-gray-500 space-y-2 text-left bg-white p-4 rounded-lg">
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Espacio de lavandería amplio</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Lavadoras modernas</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Productos a tu disposición</li>
-                    </ul>
-                </div>
-
-                <!-- Servicio 3 -->
-                <div class="bg-gray-50 p-8 rounded-2xl shadow-md card-hover border border-gray-100">
-                    <div
-                        class="w-20 h-20 mx-auto bg-brand text-white rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg transform rotate-3">
-                        <i class="fa-solid fa-shower"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Aseo Personal</h3>
-                    <p class="text-gray-600 mb-4">
-                        Instalaciones limpias y privadas para refrescarte.
-                    </p>
-                    <ul class="text-sm text-gray-500 space-y-2 text-left bg-white p-4 rounded-lg">
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Regaderas individuales</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Instalaciones limpias</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Agua caliente disponible</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Productos -->
-    <section id="productos" class="py-20 bg-brand-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-2">Nuestros Productos</h2>
-                    <p class="text-gray-600 text-lg">Insumos de calidad para resultados impecables.</p>
-                </div>
-                <div class="mt-4 md:mt-0">
-                    <i class="fa-solid fa-pump-soap text-6xl text-brand opacity-20"></i>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Producto 1 -->
-                <div
-                    class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center text-center border-t-4 border-blue-400">
-                    <div class="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mb-4 text-blue-500">
-                        <i class="fa-solid fa-jug-detergent text-2xl"></i>
-                    </div>
-                    <h4 class="font-bold text-gray-800 mb-2">Detergente Líquido</h4>
-                    <p class="text-sm text-gray-500">Especial para ropa, cuida los tejidos y elimina manchas difíciles.
-                    </p>
-                </div>
-
-                <!-- Producto 2 -->
-                <div
-                    class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center text-center border-t-4 border-blue-600">
-                    <div class="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mb-4 text-blue-600">
-                        <i class="fa-solid fa-soap text-2xl"></i>
-                    </div>
-                    <h4 class="font-bold text-gray-800 mb-2">Jabón Líquido Vehículos</h4>
-                    <p class="text-sm text-gray-500">Fórmula especial que protege la pintura y da un brillo duradero.
-                    </p>
-                </div>
-
-                <!-- Producto 3 -->
-                <div
-                    class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center text-center border-t-4 border-indigo-400">
-                    <div
-                        class="bg-indigo-50 w-16 h-16 rounded-full flex items-center justify-center mb-4 text-indigo-500">
-                        <i class="fa-solid fa-spray-can-sparkles text-2xl"></i>
-                    </div>
-                    <h4 class="font-bold text-gray-800 mb-2">Jabón Echa Espuma</h4>
-                    <p class="text-sm text-gray-500">Ideal para la limpieza profunda de interiores y tapicerías.</p>
-                </div>
-
-                <!-- Producto 4 -->
-                <div
-                    class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center text-center border-t-4 border-purple-400">
-                    <div
-                        class="bg-purple-50 w-16 h-16 rounded-full flex items-center justify-center mb-4 text-purple-500">
-                        <i class="fa-solid fa-wind text-2xl"></i>
-                    </div>
-                    <h4 class="font-bold text-gray-800 mb-2">Aromatizante Elegante</h4>
-                    <p class="text-sm text-gray-500">Variedad de fragancias y jabón aromatizante para un toque fresco
-                        final.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer id="contacto" class="bg-gray-900 text-white pt-16 pb-8 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-                <!-- Marca -->
                 <div>
                     <div class="flex items-center gap-3 mb-6">
-                        <!-- Imagen local en el pie de página también -->
                         <img src="logo.png" alt="Logo" class="h-10 w-auto object-contain rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/100x100/ffffff/0284c7?text=Logo';">
                         <span class="font-bold text-2xl tracking-wide">Centro de Lavado El Primo</span>
                     </div>
-                    <p class="text-gray-400 mb-4">
-                        S.A. de C.V. <br>
-                        Limpieza total en un solo lugar.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand transition">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand transition">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand transition">
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </a>
-                    </div>
+                    <p class="text-gray-400 mb-4">S.A. de C.V. <br> Limpieza total en un solo lugar.</p>
                 </div>
-
-                <!-- Enlaces rápidos -->
-                <div>
-                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2 inline-block">Enlaces Rápidos</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#inicio"
-                                class="text-gray-400 hover:text-white transition flex items-center gap-2"><i
-                                    class="fa-solid fa-chevron-right text-xs text-brand"></i> Inicio</a></li>
-                        <li><a href="#nosotros"
-                                class="text-gray-400 hover:text-white transition flex items-center gap-2"><i
-                                    class="fa-solid fa-chevron-right text-xs text-brand"></i> Nosotros</a></li>
-                        <li><a href="#servicios"
-                                class="text-gray-400 hover:text-white transition flex items-center gap-2"><i
-                                    class="fa-solid fa-chevron-right text-xs text-brand"></i> Servicios</a></li>
-                        <li><a href="#productos"
-                                class="text-gray-400 hover:text-white transition flex items-center gap-2"><i
-                                    class="fa-solid fa-chevron-right text-xs text-brand"></i> Productos</a></li>
-                    </ul>
                 </div>
-
-                <!-- Contacto -->
-                <div>
-                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2 inline-block">Visítanos</h4>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-location-dot mt-1 text-brand"></i>
-                            <span class="text-gray-400">Calle Principal #123, Colonia Centro.<br>Tu Ciudad,
-                                Estado.</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-phone text-brand"></i>
-                            <span class="text-gray-400">+52 (555) 123-4567</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-envelope text-brand"></i>
-                            <span class="text-gray-400">contacto@lavadototal.com</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-clock text-brand"></i>
-                            <span class="text-gray-400">Lunes a Domingo: 7:00 AM - 9:00 PM</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
-                <p>&copy; 2024 Centro de Lavado El Primo S.A. de C.V. Todos los derechos reservados.</p>
-            </div>
         </div>
     </footer>
 
-    <!-- Script para el menú móvil -->
     <script>
-        const btn = document.getElementById('mobile-menu-button');
-        const menu = document.getElementById('mobile-menu');
-        const icon = btn.querySelector('i');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-            if (menu.classList.contains('hidden')) {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            }
-        });
-
-        // Cerrar menú al hacer clic en un enlace (móvil)
-        const mobileLinks = menu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            });
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
     </script>
 </body>
-
 </html>
