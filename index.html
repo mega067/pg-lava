@@ -1,110 +1,503 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Lavado El Primo - Inicio</title>
-    <meta name="description" content="Centro de Lavado El Primo - Limpieza total en un solo lugar. Autolavado, lavandería y regaderas.">
-
+    <title>CENTRO DE LAVADO TOTAL</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Poppins', 'sans-serif'], },
                     colors: {
-                        brand: { light: '#e0f2fe', DEFAULT: '#0284c7', dark: '#075985', }
+                        brand: {
+                            dark: '#050A1F', // Fondo oscuro principal
+                            light: '#0A1438', // Fondo secundario
+                            blue: '#007BFF', // Azul brillante para botones/textos
+                            neon: '#4DB8FF', // Azul neón para detalles
+                            text: '#E0E7FF'  // Texto claro
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'] // Para títulos más llamativos
                     }
                 }
             }
         }
     </script>
     <style>
-        .hero-pattern {
-            background-color: #0284c7;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800&display=swap');
+
+        body {
+            background-color: #050A1F;
+            color: #E0E7FF;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 123, 255, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(77, 184, 255, 0.1), transparent 25%);
+            background-attachment: fixed;
+        }
+
+        .neon-text {
+            color: #4DB8FF;
+            text-shadow: 0 0 5px rgba(77, 184, 255, 0.5), 0 0 10px rgba(77, 184, 255, 0.3);
+        }
+
+        .neon-border {
+            border: 1px solid #4DB8FF;
+            box-shadow: 0 0 10px rgba(77, 184, 255, 0.2), inset 0 0 10px rgba(77, 184, 255, 0.1);
+        }
+
+        .glass-panel {
+            background: rgba(10, 20, 56, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(77, 184, 255, 0.3);
+            border-radius: 12px;
+        }
+
+        .dot-leader {
+            border-bottom: 2px dotted rgba(77, 184, 255, 0.3);
+            flex-grow: 1;
+            margin: 0 10px;
+            position: relative;
+            top: -6px;
+        }
+
+        /* Estilos para ocultar/mostrar secciones */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Reproductor de audio fijo */
+        #audio-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
         }
     </style>
 </head>
+<body class="font-sans antialiased min-h-screen flex flex-col">
 
-<body class="font-sans text-gray-800 bg-gray-50 flex flex-col min-h-screen">
-
-    <nav class="bg-white shadow-md fixed w-full z-50 top-0">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex items-center gap-3">
-                        <img src="EL_PRIMO.jpeg" alt="Logo" class="h-12 w-auto object-contain rounded-lg shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0284c7/white?text=Logo';">
-                        <span class="font-bold text-xl md:text-2xl text-brand-dark leading-tight">
-                            Centro de<br>Lavado El Primo
-                        </span>
-                    </a>
+    <header class="glass-panel sticky top-0 z-40 mx-4 mt-4 mb-8">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo y Título -->
+                <div class="flex items-center gap-4 cursor-pointer" onclick="showSection('inicio')">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center p-1 shadow-[0_0_15px_rgba(77,184,255,0.4)]">
+                        <!-- Usamos la imagen del carro rojo -->
+                        <img src="imagen.png" alt="Logo Carro Rojo" class="w-full h-full object-contain rounded-full" onerror="this.src='https://placehold.co/100x100/FF0000/FFFFFF?text=Carro'">
+                    </div>
+                    <div>
+                        <h1 class="font-heading text-2xl md:text-3xl font-extrabold text-white tracking-wider">
+                            CENTRO DE <span class="neon-text">LAVADO TOTAL</span>
+                        </h1>
+                        <p class="text-xs tracking-widest text-brand-neon uppercase">Limpieza que brilla</p>
+                    </div>
                 </div>
 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-brand font-medium transition">Inicio</a>
-                    <a href="nosotros.html" class="text-gray-600 hover:text-brand font-medium transition">Nosotros</a>
-                    <a href="servicios.html" class="text-gray-600 hover:text-brand font-medium transition">Servicios</a>
-                    <a href="productos.html" class="text-gray-600 hover:text-brand font-medium transition">Productos</a>
-                    <a href="#contacto" class="bg-brand text-white px-5 py-2 rounded-full font-medium hover:bg-brand-dark transition shadow-md">Contacto</a>
+                <!-- Menú Desktop -->
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="showSection('inicio')" class="nav-btn text-gray-300 hover:text-brand-neon font-semibold transition duration-300">INICIO</button>
+                    <button onclick="showSection('servicios')" class="nav-btn text-gray-300 hover:text-brand-neon font-semibold transition duration-300">SERVICIOS</button>
+                    <button onclick="showSection('productos')" class="nav-btn text-gray-300 hover:text-brand-neon font-semibold transition duration-300">PRODUCTOS</button>
+                    <button onclick="showSection('nosotros')" class="nav-btn text-gray-300 hover:text-brand-neon font-semibold transition duration-300">CONTACTO</button>
                 </div>
 
-                <div class="flex items-center md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-600 hover:text-brand focus:outline-none p-2">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                <!-- Menú Mobile Toggle -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-brand-neon focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
-        </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3 shadow-inner">
-                <a href="index.html" class="block px-3 py-2 text-brand font-bold bg-brand-light rounded-md">Inicio</a>
-                <a href="nosotros.html" class="block px-3 py-2 text-gray-600 hover:bg-brand-light hover:text-brand rounded-md font-medium">Nosotros</a>
-                <a href="servicios.html" class="block px-3 py-2 text-gray-600 hover:bg-brand-light hover:text-brand rounded-md font-medium">Servicios</a>
-                <a href="productos.html" class="block px-3 py-2 text-gray-600 hover:bg-brand-light hover:text-brand rounded-md font-medium">Productos</a>
-                <a href="#contacto" class="block px-3 py-2 text-brand font-bold hover:bg-brand-light rounded-md">Contacto</a>
+            <!-- Menú Mobile Dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-2">
+                <button onclick="showSection('inicio'); toggleMobileMenu()" class="block w-full text-left py-2 px-4 hover:bg-brand-light rounded text-gray-300">INICIO</button>
+                <button onclick="showSection('servicios'); toggleMobileMenu()" class="block w-full text-left py-2 px-4 hover:bg-brand-light rounded text-gray-300">SERVICIOS</button>
+                <button onclick="showSection('productos'); toggleMobileMenu()" class="block w-full text-left py-2 px-4 hover:bg-brand-light rounded text-gray-300">PRODUCTOS</button>
+                <button onclick="showSection('nosotros'); toggleMobileMenu()" class="block w-full text-left py-2 px-4 hover:bg-brand-light rounded text-gray-300">CONTACTO</button>
             </div>
-        </div>
-    </nav>
-
-    <header class="hero-pattern text-white pt-28 pb-20 md:pt-40 md:pb-32 relative overflow-hidden flex-grow">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-                Limpieza total en <br class="hidden md:block"> un solo lugar.
-            </h1>
-            <p class="text-xl md:text-2xl text-brand-light mb-10 max-w-3xl mx-auto font-light">
-                Un espacio integral diseñado para tu comodidad. Lava tu vehículo, tu ropa y refréscate, todo en
-                instalaciones de primera.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="servicios.html" class="bg-white text-brand px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg">Ver Servicios</a>
-                <a href="nosotros.html" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white/10 transition">Conócenos</a>
-            </div>
-        </div>
+        </nav>
     </header>
 
-    <footer id="contacto" class="bg-gray-900 text-white pt-16 pb-8 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-                <div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <img src="logo.png" alt="Logo" class="h-10 w-auto object-contain rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/100x100/ffffff/0284c7?text=Logo';">
-                        <span class="font-bold text-2xl tracking-wide">Centro de Lavado El Primo</span>
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+
+        <!-- ================= INICIO ================= -->
+        <section id="inicio" class="page-section active">
+            <div class="text-center py-16 md:py-24">
+                <div class="inline-block mb-8 relative">
+                    <div class="absolute inset-0 bg-brand-blue blur-[60px] opacity-30 rounded-full"></div>
+                    <img src="imagen.png" alt="Centro de Lavado Total Hero" class="relative z-10 w-64 md:w-96 mx-auto drop-shadow-2xl" onerror="this.src='https://placehold.co/400x400/0A1438/4DB8FF?text=Auto+Brillante'">
+                </div>
+                <h2 class="font-heading text-4xl md:text-6xl font-bold mb-6">
+                    TU AUTO COMO <span class="neon-text">NUEVO</span>, SIEMPRE.
+                </h2>
+                <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                    Ofrecemos los mejores productos y servicios de auto lavado manual, lavandería y regaderas con calidad garantizada.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button onclick="showSection('servicios')" class="bg-brand-blue hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-[0_0_15px_rgba(0,123,255,0.5)]">
+                        Ver Servicios
+                    </button>
+                    <button onclick="showSection('productos')" class="bg-transparent border-2 border-brand-neon text-brand-neon hover:bg-brand-neon hover:text-brand-dark font-bold py-3 px-8 rounded-full transition duration-300">
+                        Ver Productos
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SERVICIOS ================= -->
+        <section id="servicios" class="page-section">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-3xl md:text-5xl font-bold mb-2 flex items-center justify-center gap-4">
+                    <i class="fas fa-star text-brand-neon text-2xl"></i>
+                    TIEMPOS DE <span class="neon-text">LAVADO</span>
+                    <i class="fas fa-star text-brand-neon text-2xl"></i>
+                </h2>
+                <div class="h-1 w-32 bg-brand-neon mx-auto rounded mt-4 shadow-[0_0_10px_#4DB8FF]"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Lavandería -->
+                <div class="glass-panel p-6 neon-border flex flex-col justify-between">
+                    <div class="flex items-start gap-4">
+                        <div class="text-4xl text-brand-neon p-3 bg-brand-dark rounded-lg border border-brand-blue">
+                            <i class="fas fa-washing-machine"></i> <!-- Fallback if icon missing: -->
+                            <svg class="w-10 h-10 fill-current" viewBox="0 0 24 24"><path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M10,6H14V8H10V6M12,19C9.24,19 7,16.76 7,14C7,11.24 9.24,9 12,9C14.76,9 17,11.24 17,14C17,16.76 14.76,19 12,19M12,11A3,3 0 0,0 9,14A3,3 0 0,0 12,17A3,3 0 0,0 15,14A3,3 0 0,0 12,11Z"/></svg>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-xl font-bold text-white mb-1">1 KG DE LAVADO DE ROPA</h3>
+                            <p class="text-sm text-gray-400">Ideal para cargas pequeñas.</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl font-heading font-bold neon-text">15</div>
+                            <div class="text-xs uppercase text-gray-400">Minutos</div>
+                        </div>
                     </div>
-                    <p class="text-gray-400 mb-4">S.A. de C.V. <br> Limpieza total en un solo lugar.</p>
+                    <div class="mt-4 flex items-end justify-end">
+                        <span class="text-2xl font-bold text-white">$ 35.00</span>
+                    </div>
                 </div>
+
+                <!-- Regadera 15 min -->
+                <div class="glass-panel p-6 neon-border flex flex-col justify-between">
+                    <div class="flex items-start gap-4">
+                        <div class="text-4xl text-brand-neon p-3 bg-brand-dark rounded-lg border border-brand-blue">
+                            <i class="fas fa-shower"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-xl font-bold text-white mb-1">15 MINUTOS DE REGADERA</h3>
+                            <p class="text-sm text-gray-400">Enjuague y extracción rápida.</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl font-heading font-bold neon-text">15</div>
+                            <div class="text-xs uppercase text-gray-400">Minutos</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-end justify-end">
+                        <span class="text-2xl font-bold text-white">$ 25.00</span>
+                    </div>
                 </div>
+
+                <!-- Regadera 30 min -->
+                <div class="glass-panel p-6 neon-border flex flex-col justify-between">
+                    <div class="flex items-start gap-4">
+                        <div class="text-4xl text-brand-neon p-3 bg-brand-dark rounded-lg border border-brand-blue">
+                            <i class="fas fa-shower"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-xl font-bold text-white mb-1">30 MINUTOS DE REGADERA</h3>
+                            <p class="text-sm text-gray-400">Lavado más completo.</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl font-heading font-bold neon-text">30</div>
+                            <div class="text-xs uppercase text-gray-400">Minutos</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-end justify-end">
+                        <span class="text-2xl font-bold text-white">$ 40.00</span>
+                    </div>
+                </div>
+
+                <!-- Manguera a Presión 15 min -->
+                <div class="glass-panel p-6 neon-border flex flex-col justify-between">
+                    <div class="flex items-start gap-4">
+                        <div class="text-4xl text-brand-neon p-3 bg-brand-dark rounded-lg border border-brand-blue">
+                            <i class="fas fa-spray-can"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-xl font-bold text-white mb-1">15 MINUTOS MANGUERA A PRESIÓN</h3>
+                            <p class="text-sm text-gray-400">Potencia para suciedad media.</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl font-heading font-bold neon-text">15</div>
+                            <div class="text-xs uppercase text-gray-400">Minutos</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-end justify-end">
+                        <span class="text-2xl font-bold text-white">$ 55.00</span>
+                    </div>
+                </div>
+
+                <!-- Manguera a Presión 30 min -->
+                <div class="glass-panel p-6 md:col-span-2 neon-border flex flex-col justify-between max-w-2xl mx-auto w-full">
+                    <div class="flex items-start gap-4">
+                        <div class="text-4xl text-brand-neon p-3 bg-brand-dark rounded-lg border border-brand-blue">
+                            <i class="fas fa-spray-can"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-xl font-bold text-white mb-1">30 MINUTOS MANGUERA A PRESIÓN</h3>
+                            <p class="text-sm text-gray-400">Limpieza profunda y detallada.</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl font-heading font-bold neon-text">30</div>
+                            <div class="text-xs uppercase text-gray-400">Minutos</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-end justify-end">
+                        <span class="text-2xl font-bold text-white">$ 100.00</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= PRODUCTOS ================= -->
+        <section id="productos" class="page-section">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-3xl md:text-5xl font-bold mb-2 flex items-center justify-center gap-4">
+                    <i class="fas fa-sparkles text-brand-neon text-2xl"></i>
+                    <span class="neon-text">PRODUCTOS</span>
+                    <i class="fas fa-sparkles text-brand-neon text-2xl"></i>
+                </h2>
+                <div class="h-1 w-32 bg-brand-neon mx-auto rounded mt-4 shadow-[0_0_10px_#4DB8FF]"></div>
+            </div>
+
+            <div class="glass-panel p-6 md:p-10 max-w-4xl mx-auto neon-border">
+                <div class="space-y-6" id="product-list">
+                    <!-- Los productos se inyectarán aquí vía JavaScript para mantener el HTML limpio -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONTACTO (Nosotros) ================= -->
+        <section id="nosotros" class="page-section">
+            <div class="text-center mb-12">
+                <h2 class="font-heading text-3xl md:text-5xl font-bold mb-2 flex items-center justify-center gap-4">
+                    <i class="fas fa-address-card text-brand-neon text-2xl"></i>
+                    <span class="neon-text">CONTACTO</span>
+                    <i class="fas fa-address-card text-brand-neon text-2xl"></i>
+                </h2>
+                <div class="h-1 w-32 bg-brand-neon mx-auto rounded mt-4 shadow-[0_0_10px_#4DB8FF]"></div>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <div class="glass-panel p-8 md:p-12 neon-border text-center relative overflow-hidden">
+                    <!-- Background decoration -->
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-brand-blue rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+                    <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-brand-neon rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+                    
+                    <div class="relative z-10 flex flex-col items-center">
+                        <img src="imagen.png" alt="Mascota Autolavado" class="w-48 mb-6 drop-shadow-lg" onerror="this.src='https://placehold.co/200x200/0A1438/4DB8FF?text=Logo'">
+                        
+                        <h3 class="font-heading text-3xl font-bold text-white mb-8">AUTOLAVADO TOTAL</h3>
+                        
+                        <div class="space-y-6 w-full max-w-md text-left">
+                            
+                            <a href="https://mega067.github.io/pg-lava/" target="_blank" class="flex items-center gap-4 p-4 rounded-lg hover:bg-brand-light transition group border border-transparent hover:border-brand-neon">
+                                <div class="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center text-brand-neon group-hover:bg-brand-neon group-hover:text-brand-dark transition">
+                                    <i class="fas fa-globe text-xl"></i>
+                                </div>
+                                <span class="text-gray-300 group-hover:text-white break-all">mega067.github.io/pg-lava/</span>
+                            </a>
+
+                            <a href="mailto:autolavadototalcontacto@gmail.com" class="flex items-center gap-4 p-4 rounded-lg hover:bg-brand-light transition group border border-transparent hover:border-brand-neon">
+                                <div class="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center text-brand-neon group-hover:bg-brand-neon group-hover:text-brand-dark transition">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <span class="text-gray-300 group-hover:text-white break-all">autolavadototalcontacto@gmail.com</span>
+                            </a>
+
+                            <a href="#" class="flex items-center gap-4 p-4 rounded-lg hover:bg-brand-light transition group border border-transparent hover:border-brand-neon">
+                                <div class="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center text-brand-neon group-hover:bg-brand-neon group-hover:text-brand-dark transition">
+                                    <i class="fab fa-tiktok text-xl"></i>
+                                </div>
+                                <span class="text-gray-300 group-hover:text-white">autolavadototal_o</span>
+                            </a>
+
+                            <a href="#" class="flex items-center gap-4 p-4 rounded-lg hover:bg-brand-light transition group border border-transparent hover:border-brand-neon">
+                                <div class="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center text-brand-neon group-hover:bg-brand-neon group-hover:text-brand-dark transition">
+                                    <i class="fab fa-facebook-f text-xl"></i>
+                                </div>
+                                <span class="text-gray-300 group-hover:text-white">AutolavadototalFb</span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Controles de Audio Flotantes -->
+    <div id="audio-controls" class="glass-panel p-3 rounded-full shadow-lg flex items-center gap-3 border border-brand-neon">
+        <!-- AQUÍ PONES LA RUTA DE TU ARCHIVO MP3 -->
+        <audio id="bgMusic" loop>
+            <source src="TU_RUTA_AL_ARCHIVO.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+        
+        <div class="flex flex-col ml-2 hidden sm:block">
+            <span class="text-xs text-brand-neon font-bold uppercase tracking-wider leading-tight">Música</span>
+            <span id="music-status" class="text-[10px] text-gray-400">Pausada</span>
+        </div>
+
+        <button id="playBtn" class="w-10 h-10 rounded-full bg-brand-blue hover:bg-blue-500 text-white flex items-center justify-center transition shadow-[0_0_10px_rgba(0,123,255,0.5)]">
+            <i class="fas fa-play"></i>
+        </button>
+        <button id="muteBtn" class="w-10 h-10 rounded-full bg-brand-dark hover:bg-gray-800 text-gray-300 flex items-center justify-center transition border border-gray-600">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+
+    <footer class="bg-brand-dark border-t border-brand-blue/30 py-6 text-center text-sm text-gray-400 mt-auto">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8">
+            <span class="flex items-center gap-2"><i class="fas fa-tint text-brand-neon"></i> Usamos productos de calidad</span>
+            <span class="flex items-center gap-2"><i class="fas fa-star text-brand-neon"></i> Cuidamos tu auto</span>
+            <span class="flex items-center gap-2"><i class="fas fa-heart text-brand-neon"></i> Satisfacción garantizada</span>
+        </div>
+        <div class="mt-4 opacity-50">
+            &copy; 2026 Centro de Lavado Total. Todos los derechos reservados.
         </div>
     </footer>
 
     <script>
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+        // --- Navegación SPA (Single Page Application) ---
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.page-section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            // Mostrar la sección solicitada
+            document.getElementById(sectionId).classList.add('active');
+            // Hacer scroll hacia arriba
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- Menú Móvil ---
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+        // --- Lógica del Reproductor de Audio ---
+        const audio = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playBtn');
+        const muteBtn = document.getElementById('muteBtn');
+        const statusText = document.getElementById('music-status');
+        let isPlaying = false;
+        let isMuted = false;
+
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                playBtn.classList.remove('bg-red-500', 'hover:bg-red-600');
+                playBtn.classList.add('bg-brand-blue', 'hover:bg-blue-500');
+                statusText.innerText = "Pausada";
+            } else {
+                // Intenta reproducir. Puede requerir interacción previa del usuario según el navegador.
+                let playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        playBtn.classList.remove('bg-brand-blue', 'hover:bg-blue-500');
+                        playBtn.classList.add('bg-red-500', 'hover:bg-red-600', 'shadow-[0_0_10px_rgba(239,68,68,0.5)]');
+                        statusText.innerText = "Reproduciendo";
+                    })
+                    .catch(error => {
+                        console.log("La reproducción automática fue prevenida. El usuario debe interactuar primero.");
+                    });
+                }
+            }
+            isPlaying = !isPlaying;
         });
+
+        muteBtn.addEventListener('click', () => {
+            isMuted = !isMuted;
+            audio.muted = isMuted;
+            if (isMuted) {
+                muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                muteBtn.classList.add('text-red-400');
+            } else {
+                muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                muteBtn.classList.remove('text-red-400');
+            }
+        });
+
+        // --- Generación Dinámica de Productos ---
+        const productosData = [
+            { icon: 'fa-bottle-water', name: 'SHAMPOO AUTOMOTRIZ (1L)', desc: 'Limpieza profunda que remueve suciedad y grasa.', price: '100.00' },
+            { icon: 'fa-bottle-droplet', name: 'SHAMPOO AUTOMOTRIZ (500ml)', desc: 'Limpieza profunda que remueve suciedad y grasa.', price: '55.00' },
+            { icon: 'fa-droplet', name: 'CERA LÍQUIDA (1L)', desc: 'Brillo intenso y protección hidrofóbica.', price: '330.00' },
+            { icon: 'fa-droplet', name: 'CERA LÍQUIDA (500ml)', desc: 'Brillo intenso y protección hidrofóbica.', price: '180.00' },
+            { icon: 'fa-pump-soap', name: 'LIMPIADOR DE INTERIORES (1L)', desc: 'Remueve plásticos, vinilos y superficies internas.', price: '90.00' },
+            { icon: 'fa-pump-soap', name: 'LIMPIADOR DE INTERIORES (500ml)', desc: 'Remueve plásticos, vinilos y superficies internas.', price: '22.00' },
+            { icon: 'fa-spray-can-sparkles', name: 'LIMPIADOR DE CRISTALES (1L)', desc: 'Visión clara sin residuos ni marcas.', price: '40.00' },
+            { icon: 'fa-spray-can-sparkles', name: 'LIMPIADOR DE CRISTALES (500ml)', desc: 'Visión clara sin residuos ni marcas.', price: '22.00' },
+            { icon: 'fa-wind', name: 'AMBIENTADORES AUTOMOTRICES', desc: 'Aromas frescos que renuevan el interior.', price: '90.00' },
+            { icon: 'fa-soap', name: 'DETERGENTE MULTIUSOS (1L)', desc: 'Limpieza efectiva para múltiples superficies.', price: '120.00' },
+            { icon: 'fa-soap', name: 'DETERGENTE MULTIUSOS (500ml)', desc: 'Limpieza efectiva para múltiples superficies.', price: '60.00' },
+            { icon: 'fa-shield-virus', name: 'DESINFECTANTE CLORADO (1L)', desc: 'Desinfección profunda con acción clorada.', price: '55.00' },
+            { icon: 'fa-box-archive', name: 'DETERGENTE EN POLVO', desc: 'Poder desengrasante para lavado eficiente.', price: '38.00' },
+            { icon: 'fa-jug-detergent', name: 'DETERGENTE LÍQUIDO (1L)', desc: 'Fórmula concentrada para lavado superior.', price: '60.00' },
+            { icon: 'fa-jug-detergent', name: 'DETERGENTE LÍQUIDO (500ml)', desc: 'Fórmula concentrada para lavado superior.', price: '35.00' },
+            { icon: 'fa-shirt', name: 'SUAVIZANTE DE TELAS (1L)', desc: 'Ropa suave, fresca y con agradable aroma.', price: '45.00' },
+            { icon: 'fa-shirt', name: 'SUAVIZANTE DE TELAS (500ml)', desc: 'Ropa suave, fresca y con agradable aroma.', price: '25.00' },
+            { icon: 'fa-pump-medical', name: 'JABÓN CORPORAL', desc: 'Higiene personal que cuida tu piel.', price: '25.00' },
+            { icon: 'fa-prescription-bottle', name: 'SOBRES DESHAMPOO PERSONAL', desc: 'Limpieza y frescura para el cuidado diario.', price: '4.00' },
+            { icon: 'fa-bottle-water', name: 'SHAMPOO PERSONAL', desc: 'Limpieza y frescura para el cuidado diario.', price: '52.00' },
+            { icon: 'fa-toilet-paper', name: 'TOALLAS DESECHABLES', desc: 'Prácticas, absorbentes e higiénicas.', price: '2.00' }
+        ];
+
+        const productListContainer = document.getElementById('product-list');
+        
+        productosData.forEach(prod => {
+            const itemHTML = `
+                <div class="flex items-center justify-between group">
+                    <div class="flex items-start gap-4 w-2/3">
+                        <div class="w-8 flex justify-center mt-1">
+                            <i class="fas ${prod.icon} text-brand-neon text-xl opacity-70 group-hover:opacity-100 transition"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm sm:text-base">${prod.name}</h4>
+                            <p class="text-xs text-gray-400 leading-tight">${prod.desc}</p>
+                        </div>
+                    </div>
+                    <div class="dot-leader hidden sm:block"></div>
+                    <div class="font-heading font-bold text-lg text-brand-neon whitespace-nowrap">
+                        $ ${prod.price}
+                    </div>
+                </div>
+            `;
+            productListContainer.innerHTML += itemHTML;
+        });
+
     </script>
 </body>
 </html>
